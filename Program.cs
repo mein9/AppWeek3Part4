@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel;
+﻿using System;
 
 namespace AppWeek3Part3
 {
@@ -30,20 +29,20 @@ namespace AppWeek3Part3
             Console.WriteLine(rational1.ToDouble());
 
             // testing reduce
-            Console.WriteLine("Testing reduce staring as 20 / 5");
+            Console.WriteLine("Testing reduce starting as 20 / 5");
             WriteRational(rational2.Reduce());
 
             // testing add
             Console.WriteLine("Testing Add");
-            Rational sum = Rational.Add(rational3, rational4);
+            Rational sum = rational3.Add(rational4); // instance method
             WriteRational(sum);
         }
+
         public static void WriteRational(Rational rational)
         {
             Console.Write(rational.numerator);
             Console.Write("/");
             Console.WriteLine(rational.denominator);
         }
-
     }
 }

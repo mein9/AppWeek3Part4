@@ -1,10 +1,8 @@
-﻿
-namespace AppWeek3Part3
+﻿namespace AppWeek3Part3
 {
     public class Rational
     {
         public int numerator;
-
         public int denominator;
 
         public Rational()
@@ -12,20 +10,24 @@ namespace AppWeek3Part3
             numerator = 0;
             denominator = 1;
         }
+
         public Rational(int numerator, int denominator)
         {
             this.numerator = numerator;
             this.denominator = denominator;
         }
+
         public Rational(int numerator)
         {
             this.numerator = numerator;
             denominator = 1;
         }
+
         public void Negate()
         {
             numerator = -numerator;
         }
+
         public void Invert()
         {
             if (numerator == 0)
@@ -37,10 +39,12 @@ namespace AppWeek3Part3
             numerator = denominator;
             denominator = temp;
         }
+
         public double ToDouble()
         {
             return (double)numerator / denominator;
         }
+
         public Rational Reduce()
         {
             int gcd = GCD(numerator, denominator);
@@ -56,6 +60,7 @@ namespace AppWeek3Part3
 
             return new Rational(reducedNumerator, reducedDenominator);
         }
+
         private int GCD(int n1, int n2)
         {
             if (n2 == 0)
@@ -67,10 +72,12 @@ namespace AppWeek3Part3
                 return GCD(n2, n1 % n2);
             }
         }
-        public static Rational Add(Rational r1, Rational r2)
+
+        // Convert Add method to an instance method
+        public Rational Add(Rational other)
         {
-            int commonDenominator = r1.denominator * r2.denominator;
-            int numeratorSum = (r1.numerator * r2.denominator) + (r2.numerator * r1.denominator);
+            int commonDenominator = this.denominator * other.denominator;
+            int numeratorSum = (this.numerator * other.denominator) + (other.numerator * this.denominator);
 
             Rational result = new Rational(numeratorSum, commonDenominator);
             return result.Reduce();
